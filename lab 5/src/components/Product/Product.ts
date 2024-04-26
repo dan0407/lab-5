@@ -121,3 +121,5 @@ class card extends HTMLElement {
 		}
 	}
 }
+customElements.define("my-card", card);
+export default card;
