@@ -1,0 +1,36 @@
+.cardSection {
+	background: #fff;
+	box-shadow: 0 2px 89px 73px rgba(0, 0, 0, 0.1);
+	border-radius: 10px;
+	overflow: hidden;
+	margin-bottom: 3%;
+	width: 31%;
+}
+
+.infoSection {
+	padding: 20px;
+	width: 80%;
+}
+
+h1 {
+	font-size: 1.5rem;
+	font-weight: bold;
+	margin-bottom: 10px;
+}
+
+.text {
+	font-size: 1rem;
+	line-height: 1.6;
+	margin-bottom: 10px;
+}
+.image {
+	width: 106%;
+	height: 458px;
+	margin-bottom: 20px;
+	display: flex;
+	align-items: center;
+}
+
+p:last-of-type {
+	margin-bottom: 0;
+}

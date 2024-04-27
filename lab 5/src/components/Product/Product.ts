@@ -1,9 +1,11 @@
+import styles from './Product.css';
+
 export enum AttributeCard {
 	name = 'name',
 	image = 'image',
 	Title = 'Title',
 	Description = 'Description',
-	Category = 'Category',
+	category = 'Category',
 	Price = 'Price',
 	Rating = 'Rating',
 }
@@ -57,69 +59,28 @@ class card extends HTMLElement {
 
 	render() {
 		if (this.shadowRoot) {
-			this.shadowRoot.innerHTML = `
+			this.shadowRoot.innerHTML = ``;
 
-	`;
+			const css = this.ownerDocument.createElement('style');
+			css.innerHTML = styles;
+			this.shadowRoot?.appendChild(css);
 
-			// Crear la sección
-			const section = document.createElement('section');
-			section.classList.add('cardsection');
+			this.shadowRoot.innerHTML += `
+			<section class="cardSection">
 
-			// Crear el contenedor de información
-			const infoDiv = document.createElement('div');
-			infoDiv.classList.add('info');
+		 <div class="infoSection">
+				 <h1>Name: ${this.name}</h1>
+				 <img class="image" src="${this.image}" alt="">
+				 <p class="text">Title: ${this.Title}</p>
+				 <p class="text">Description: ${this.Description}</p>
+				 <p class="text">Price: ${this.Price}</p>
+				 <p class="text">Rating: ${this.Rating}</p>
+		 </div>
+ </section>
 
-			const liADD = document.createElement('div');
-			const addimg = document.createElement('img');
-			const btnADD = document.createElement('button');
-
-			addimg.src = `https://w7.pngwing.com/pngs/12/220/png-transparent-cart-shopping-ic-google-material-design-3-icon.png`;
-			addimg.id = 'addImg';
-			btnADD.textContent = 'Add Shopping Cart';
-			btnADD.appendChild(addimg);
-			liADD.appendChild(btnADD);
-			btnADD.addEventListener('click', () => {});
-			section.appendChild(liADD);
-
-			// Crear los elementos de texto
-			const nameu = document.createElement('h1');
-			nameu.textContent = this.name ? this.name : '';
-
-			const titlePara = document.createElement('p');
-			titlePara.classList.add('text');
-			titlePara.textContent = 'Title: ' + (this.Title ? this.Title : '');
-
-			const descriptionPara = document.createElement('p');
-			descriptionPara.classList.add('text');
-			descriptionPara.textContent = 'Description: ' + (this.Description ? this.Description : '');
-
-			const categoryPara = document.createElement('p');
-			categoryPara.classList.add('text');
-			categoryPara.textContent = 'Category: ' + (this.Category ? this.Category : '');
-
-			const pricePara = document.createElement('p');
-			pricePara.classList.add('text');
-			pricePara.textContent = 'Price: ' + (this.Price ? this.Price : '');
-
-			const ratingPara = document.createElement('p');
-			ratingPara.classList.add('text');
-			ratingPara.textContent = 'Rating: ' + (this.Rating ? this.Rating : '');
-
-			// Agregar los elementos de texto al contenedor de información
-			infoDiv.appendChild(nameu);
-			infoDiv.appendChild(titlePara);
-			infoDiv.appendChild(descriptionPara);
-			infoDiv.appendChild(categoryPara);
-			infoDiv.appendChild(pricePara);
-			infoDiv.appendChild(ratingPara);
-
-			// Agregar el contenedor de información a la sección
-			section.appendChild(infoDiv);
-
-			// Agregar la sección al documento
-			document.body.appendChild(section);
+ `;
 		}
 	}
 }
-customElements.define("my-card", card);
+customElements.define('my-card', card);
 export default card;

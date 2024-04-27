@@ -1,6 +1,7 @@
-export interface shoppingItem  {
-    id: number;
-    image: string;
-    title: string;
-    price: string;
-    }
+export interface shoppingItem {
+	id: number;
+	name: string;
+	image: string;
+	title: string;
+	price: string;
+}

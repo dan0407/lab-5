@@ -1,21 +1,21 @@
-import "./components/indexapa"
-import { vainito } from "./services/getProduts";
+import './components/indexapa';
+import './screens/dashboard';
+import stylesrender from './indexab.css';
 
 class AppContainer extends HTMLElement {
-    constructor(){
-        super();
-        this.attachShadow({mode: "open"})
-    }
+	constructor() {
+		super();
+		this.attachShadow({ mode: 'open' });
+	}
 
-    async connectedCallback() {
-        const data = await vainito()
-        this.render()
-    }
+	connectedCallback() {
+		this.render();
+	}
 
-    render() {
-        const something = this.ownerDocument.createElement('div');
-        this.shadowRoot?.appendChild(something);
-    }
+	render() {
+		const something = this.ownerDocument.createElement('app-dashboard');
+		this.shadowRoot?.appendChild(something);
+	}
 }
 
-customElements.define('app-container', AppContainer)
+customElements.define('app-container', AppContainer);
