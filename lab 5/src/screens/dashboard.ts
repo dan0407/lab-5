@@ -19,13 +19,13 @@ class Dashboard extends HTMLElement {
 	render() {
 		appState.products.forEach((products: any) => {
 			const card = this.ownerDocument.createElement('my-card') as Card;
-			card.setAttribute(AttributeCard.name, products.name);
 			card.setAttribute(AttributeCard.image, products.image);
-			card.setAttribute(AttributeCard.Title, products.title);
-			card.setAttribute(AttributeCard.Description, products.description);
+			card.setAttribute(AttributeCard.title, products.title);
+			card.setAttribute(AttributeCard.description, products.description);
 			card.setAttribute(AttributeCard.category, products.category);
-			card.setAttribute(AttributeCard.Price, products.price);
-			card.setAttribute(AttributeCard.Rating, products.rating);
+			card.setAttribute(AttributeCard.price, JSON.stringify(products.price));
+			card.setAttribute(AttributeCard.ratingcount, JSON.stringify(products.rating.rate));
+			card.setAttribute(AttributeCard.ratingrate, JSON.stringify(products.rating.count));
 			this.shadowRoot?.appendChild(card);
 		});
 	}

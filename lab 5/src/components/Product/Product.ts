@@ -1,22 +1,22 @@
 import styles from './Product.css';
 
 export enum AttributeCard {
-	name = 'name',
-	image = 'image',
-	Title = 'Title',
-	Description = 'Description',
-	category = 'Category',
-	Price = 'Price',
-	Rating = 'Rating',
+	'image' = 'image',
+	'title' = 'Title',
+	'description' = 'description',
+	'category' = 'category',
+	'price' = 'price',
+	'ratingcount' = 'ratingcount',
+	'ratingrate' = 'ratingrate',
 }
 class card extends HTMLElement {
-	name?: string;
 	image?: string;
 	Title?: string;
-	Description?: string;
-	Category?: string;
-	Price?: number;
-	Rating?: number;
+	description?: string;
+	category?: string;
+	price?: number;
+	ratingcount?: number;
+	ratingrate?: number;
 
 	constructor() {
 		super(); // always call super() first in the ctor.
@@ -25,24 +25,28 @@ class card extends HTMLElement {
 
 	static get observedAttributes() {
 		const attrs: Record<AttributeCard, null> = {
-			name: null,
 			image: null,
 			Title: null,
-			Description: null,
-			Category: null,
-			Price: null,
-			Rating: null,
+			description: null,
+			category: null,
+			price: null,
+			ratingcount: null,
+			ratingrate: null,
 		};
 		return Object.keys(attrs);
 	}
 
 	attributeChangedCallback(propName: AttributeCard, oldValue: string | undefined, newValue: string | undefined) {
 		switch (propName) {
-			case AttributeCard.Price:
-				this.Price = newValue ? Number(newValue) : undefined;
+			case AttributeCard.price:
+				this.price = newValue ? Number(newValue) : undefined;
 				break;
-			case AttributeCard.Rating:
-				this.Rating = newValue ? Number(newValue) : undefined;
+			case AttributeCard.ratingcount:
+				this.ratingcount = newValue ? Number(newValue) : undefined;
+				break;
+
+			case AttributeCard.ratingrate:
+				this.ratingrate = newValue ? Number(newValue) : undefined;
 				break;
 
 			default:
@@ -68,13 +72,14 @@ class card extends HTMLElement {
 			this.shadowRoot.innerHTML += `
 			<section class="cardSection">
 
-		 <div class="infoSection">
-				 <h1>Name: ${this.name}</h1>
+			<div class="card">
+
 				 <img class="image" src="${this.image}" alt="">
-				 <p class="text">Title: ${this.Title}</p>
-				 <p class="text">Description: ${this.Description}</p>
-				 <p class="text">Price: ${this.Price}</p>
-				 <p class="text">Rating: ${this.Rating}</p>
+				 <h1 class="title">Title: ${this.title}</h1>
+				 <p class="text">Description: ${this.description}</p>
+				 <p>Rating: rate: ${this.ratingcount} count: ${this.ratingrate}</p>
+				 <h3>Price: ${this.price}</h3>
+				 <button class="btn-elegant" type="submit">ADD PRODUCT</button>
 		 </div>
  </section>
 
