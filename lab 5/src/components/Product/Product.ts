@@ -79,11 +79,15 @@ class card extends HTMLElement {
 				 <p class="text">Description: ${this.description}</p>
 				 <p>Rating: rate: ${this.ratingcount} count: ${this.ratingrate}</p>
 				 <h3>Price: ${this.price}</h3>
-				 <button class="btn-elegant" type="submit">ADD PRODUCT</button>
+				 <button id="addProductBtn" class="btn-elegant" type="button">ADD PRODUCT</button>
 		 </div>
  </section>
-
  `;
+			const addProductBtn = document.getElementById('addProductBtn') as HTMLButtonElement;
+
+			if (addProductBtn) {
+				addProductBtn.addEventListener('click', shop);
+			}
 		}
 	}
 }

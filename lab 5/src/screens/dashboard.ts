@@ -1,6 +1,7 @@
 import Card, { AttributeCard } from '../components/Product/Product';
 import { addObserver, appState, dispatch } from '../store/index';
 import { GetProductActiondata } from '../store/actions';
+import storage from '../utils/storage';
 
 class Dashboard extends HTMLElement {
 	constructor() {
@@ -17,7 +18,10 @@ class Dashboard extends HTMLElement {
 	}
 
 	render() {
-		appState.products.forEach((products: any) => {
+		const localstorage: any = window.localStorage;
+		const local = JSON.parse(localstorage.getItem('Appstate'));
+
+		local.products.forEach((products: any) => {
 			const card = this.ownerDocument.createElement('my-card') as Card;
 			card.setAttribute(AttributeCard.image, products.image);
 			card.setAttribute(AttributeCard.title, products.title);
