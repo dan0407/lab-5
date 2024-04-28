@@ -12,6 +12,8 @@ class Dashboard extends HTMLElement {
 	async connectedCallback() {
 		const action = await GetProductActiondata();
 		dispatch(action);
+		const Storage = JSON.stringify(appState);
+		localStorage.setItem('Appstate', Storage);
 	}
 
 	render() {
@@ -19,11 +21,11 @@ class Dashboard extends HTMLElement {
 			const card = this.ownerDocument.createElement('my-card') as Card;
 			card.setAttribute(AttributeCard.name, products.name);
 			card.setAttribute(AttributeCard.image, products.image);
-			card.setAttribute(AttributeCard.Title, products.Title);
-			card.setAttribute(AttributeCard.Description, products.Description);
-			card.setAttribute(AttributeCard.Category, products.Category);
-			card.setAttribute(AttributeCard.Price, products.Price);
-			card.setAttribute(AttributeCard.Rating, products.Rating);
+			card.setAttribute(AttributeCard.Title, products.title);
+			card.setAttribute(AttributeCard.Description, products.description);
+			card.setAttribute(AttributeCard.category, products.category);
+			card.setAttribute(AttributeCard.Price, products.price);
+			card.setAttribute(AttributeCard.Rating, products.rating);
 			this.shadowRoot?.appendChild(card);
 		});
 	}
