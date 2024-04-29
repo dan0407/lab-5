@@ -1,4 +1,6 @@
+import { dispatch, appState } from '../../store/index';
 import styles from './Product.css';
+import { GetProductActiondata, GetshoppingItemsActiondata, SaveshoppingItemsActiondata } from '../../store/actions';
 
 export enum AttributeCard {
 	'image' = 'image',
@@ -79,17 +81,23 @@ class card extends HTMLElement {
 				 <p class="text">Description: ${this.description}</p>
 				 <p>Rating: rate: ${this.ratingcount} count: ${this.ratingrate}</p>
 				 <h3>Price: ${this.price}</h3>
-				 <button id="addProductBtn" class="btn-elegant" type="button">ADD PRODUCT</button>
+				 <button class="btnelegant" type="button">ADD PRODUCT</button>
 		 </div>
  </section>
  `;
-			const addProductBtn = document.getElementById('addProductBtn') as HTMLButtonElement;
+			const addProductBtn = this.shadowRoot.querySelector('.btnelegant');
 
 			if (addProductBtn) {
-				addProductBtn.addEventListener('click', shop);
+				addProductBtn.addEventListener('click', async () => {
+					const actionsave = SaveshoppingItemsActiondata();
+					dispatch(actionsave({ image: this.image, Title: this.title, price: this.price }));
+					const Storagesave = JSON.stringify(appState);
+					localStorage.setItem('Appstate', Storagesave);
+				});
 			}
 		}
 	}
 }
+
 customElements.define('my-card', card);
 export default card;

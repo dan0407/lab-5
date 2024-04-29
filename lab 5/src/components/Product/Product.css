@@ -3,12 +3,12 @@
 	border-radius: 10px;
 	box-shadow: inset 0px -1px 0px 5px rgb(0 0 0);
 	background-color: #fff;
-	width: 405px;
-	height: 50rem;
+	width: 537px;
+	height: 57rem;
 	margin-bottom: 27px;
 }
 .card .image {
-	width: 85%;
+	width: 56%;
 	border-radius: 10px 10px 0 0;
 	margin-left: 20px;
 }
@@ -33,7 +33,7 @@
 	margin: 13px 0;
 }
 
-.btn-elegant {
+.btnelegant {
 	padding: 10px 20px;
 	border-radius: 4px;
 	background-color: #000000;
@@ -49,11 +49,11 @@
 	transition: background-color 0.3s ease;
 }
 
-.btn-elegant:hover {
+.btnelegant:hover {
 	background-color: #3e8e41;
 }
 
-.btn-elegant:active {
+.btnelegant:active {
 	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 	transform: translateY(1px);
 }
